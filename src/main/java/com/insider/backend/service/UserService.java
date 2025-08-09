@@ -8,6 +8,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.insider.backend.entity.UsersEntity;
+import com.insider.backend.exceptions.ConflictException;
+import com.insider.backend.exceptions.ResourceNotFoundException;
 import com.insider.backend.repositories.UserRepository;
 
 @Service
@@ -29,7 +31,7 @@ public class UserService {
 		Optional<UsersEntity> existingUser = userRepository.findBySapid(user.getSapid());
 		
 		if(existingUser.isPresent()) {
-			throw new RuntimeException("User with this SAPID is already exists");
+			throw new ConflictException("User with the SAP ID is already present");
 		}
 		else {
 			String hashedPassword = passwordEncoder.encode(user.getPassword());
@@ -47,7 +49,7 @@ public class UserService {
 			userRepository.deleteBySapid(sapid);
 		}
 		else {
-			throw new RuntimeException("User is not exist to delete");
+			throw new ResourceNotFoundException("User with the sapid is not present" + sapid);
 		}
 	}
 	

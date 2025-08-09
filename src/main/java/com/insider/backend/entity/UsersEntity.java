@@ -41,7 +41,7 @@ public class UsersEntity {
     @NotBlank(message = "Role is required")
     @Pattern(regexp = "USER|ADMIN", message = "Role must be USER or ADMIN")  // Added for restriction
     @Column(name = "role", nullable = false)
-    private String role = "USER";  
+    private String role = "ADMIN";  //Later will be changed to USER
 
     @NotBlank(message = "Name is required")
     @Size(min = 2, max = 100, message = "Name must have more than 2 characters")
