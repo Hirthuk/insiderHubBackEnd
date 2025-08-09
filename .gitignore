@@ -1,0 +1,80 @@
+# ###################################################################
+# ## Java, Spring Boot, and Maven .gitignore
+# ##
+# ## This file is configured to IGNORE 'application.properties'
+# ## and other common build artifacts, logs, and IDE files.
+# ###################################################################
+
+# ## IDE-specific files ##
+# Eclipse
+.classpath
+.project
+.settings/
+
+# JetBrains IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+.nb-gradle/
+
+# VS Code
+.vscode/
+
+# ## Build output and compiled files ##
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+build-tool-versions.txt
+
+# ## Log files ##
+*.log
+logs/
+
+# ## Temporary files ##
+# Package Files
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# ## Operating System files ##
+# Mac
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ## Secrets and sensitive configuration ##
+# Ignore all properties files by default, as they often contain secrets
+# like database passwords or API keys. This now includes application.properties.
+application.properties
+*.properties
+
+# ## Other ##
+# Ignore Gradle build files (in case of a mixed project)
+.gradle
+/build/
+
+# Ignore test reports
+/target/surefire-reports/
+/target/failsafe-reports/
+
+# Ignore Maven wrapper files
+.mvn/wrapper/maven-wrapper.jar
