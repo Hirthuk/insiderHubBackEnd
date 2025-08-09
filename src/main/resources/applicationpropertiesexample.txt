@@ -1,0 +1,20 @@
+spring.application.name=InsiderHub
+
+# Database Configuration for Neon PG
+spring.datasource.url=
+spring.datasource.username=
+spring.datasource.password=
+spring.datasource.driver-class-name=
+
+# JPA/Hibernate Settings
+# Auto-creates/updates tables from your entities
+spring.jpa.hibernate.ddl-auto=update  
+ # Logs SQL for debugging (optional but helpful)
+spring.jpa.show-sql=true 
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+
+# Optional: If you want to disable auto-init or add more logging
+# Prevents Spring from running init scripts if not needed
+spring.sql.init.mode=never  
+# More detailed logs for troubleshooting
+logging.level.org.hibernate.SQL=DEBUG  
