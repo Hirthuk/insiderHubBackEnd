@@ -27,7 +27,7 @@ public class UserService {
 	}
 	
 //	To Create User
-	public UsersEntity createUser(UsersEntity user) {
+	public String createUser(UsersEntity user) {
 		Optional<UsersEntity> existingUser = userRepository.findBySapid(user.getSapid());
 		
 		if(existingUser.isPresent()) {
@@ -36,7 +36,8 @@ public class UserService {
 		else {
 			String hashedPassword = passwordEncoder.encode(user.getPassword());
 			user.setPassword(hashedPassword);
-			return userRepository.save(user);
+			UsersEntity newUser = userRepository.save(user);
+			return newUser.getName() + "  Has been added successfully";
 		}
 	}
 	

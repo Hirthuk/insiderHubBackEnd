@@ -46,7 +46,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 				String Sapid = claims.getSubject();
 				String role = (String) claims.get("role");
 				
-				SimpleGrantedAuthority authority = new SimpleGrantedAuthority("Role_"+role);
+				SimpleGrantedAuthority authority = new SimpleGrantedAuthority("ROLE_"+role);
 				UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(Sapid, null, List.of(authority));
 				
 				SecurityContextHolder.getContext().setAuthentication(auth);

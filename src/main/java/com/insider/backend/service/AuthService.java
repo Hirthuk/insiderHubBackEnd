@@ -30,10 +30,18 @@ public class AuthService {
 		Long sapid = loginUserRequest.getSapid();
 		String password = loginUserRequest.getPassword();
 		
+
 		Optional<UsersEntity> existingUser = userRepository.findBySapid(sapid);
 		
-		if(existingUser.isPresent()) {
+				if(existingUser.isPresent()) {
 			UsersEntity user = existingUser.get();
+//			Debugging commands
+//			System.out.println("Hash from DB [" + user.getPassword() + "]");
+//			System.out.println(user.getPassword().length());
+//			System.out.println("Check  " + passwordEncoder.matches(password, user.getPassword()));
+//			System.out.println("Entered password [" + password + "]");
+//			System.out.println(passwordEncoder.encode(password));
+//			System.out.println(passwordEncoder.encode(password).equals(user.getPassword()));
 			if(passwordEncoder.matches(password, user.getPassword())) {
 				String role = user.getRole();
 				String token = jwtUtuil.generateToken(sapid, role);

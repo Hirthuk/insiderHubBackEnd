@@ -41,7 +41,7 @@ public class UsersEntity {
     @NotBlank(message = "Role is required")
     @Pattern(regexp = "USER|ADMIN", message = "Role must be USER or ADMIN")  // Added for restriction
     @Column(name = "role", nullable = false)
-    private String role = "ADMIN";  //Later will be changed to USER
+    private String role = "USER";
 
     @NotBlank(message = "Name is required")
     @Size(min = 2, max = 100, message = "Name must have more than 2 characters")
@@ -67,7 +67,7 @@ public class UsersEntity {
     private Integer total_appreciation;
 
     @Column(name = "rank")
-    private int rank;
+    private Integer rank = 0;
 
     @Column(name = "creation_date", nullable = false)
     private LocalDateTime creation_date;  // Switched to LocalDateTime
@@ -159,11 +159,11 @@ public class UsersEntity {
         this.total_appreciation = total_appreciation;
     }
 
-    public int getRank() {
+    public Integer getRank() {
         return rank;
     }
 
-    public void setRank(int rank) {
+    public void setRank(Integer rank) {
         this.rank = rank;
     }
 
@@ -182,7 +182,7 @@ public class UsersEntity {
 
     // Constructor with fields (annotations removed from params; they belong on fields)
     public UsersEntity(String email, String password, String role, String name, Long sapid, String designation,
-                       Long phone_number, String project_name, Integer total_appreciation, int rank, LocalDateTime creation_date) {
+                       Long phone_number, String project_name, Integer total_appreciation, Integer rank, LocalDateTime creation_date) {
         this.email = email;
         this.password = password;
         this.role = role;

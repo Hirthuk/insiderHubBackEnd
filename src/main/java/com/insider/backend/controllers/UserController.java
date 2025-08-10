@@ -33,7 +33,7 @@ public class UserController {
 	
 	@PostMapping
 	@PreAuthorize("hasRole('ADMIN')")
-	public UsersEntity createUser(@Valid @RequestBody UsersEntity user) {
+	public String createUser(@Valid @RequestBody UsersEntity user) {
 		return userService.createUser(user);
 	}
 	
