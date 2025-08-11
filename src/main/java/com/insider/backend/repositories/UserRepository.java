@@ -1,5 +1,6 @@
 package com.insider.backend.repositories;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,5 +19,5 @@ public interface UserRepository extends JpaRepository<UsersEntity, Long> {
 	void deleteBySapid(Long sapid);
 	
 	Optional<UsersEntity> findByPhoneNumber(Long phoneNumber);
-	Optional<UsersEntity> findByRole(String role);
+	List<UsersEntity> findByRole(String role);
 }

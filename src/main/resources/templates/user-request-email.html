@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Access Request - Insider Hub</title>
+</head>
+<body style="margin:0; padding:0; background-color:#f4f6f8; font-family:Arial, sans-serif;">
+
+<!-- Container -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#f4f6f8" style="padding: 20px 0;">
+    <tr>
+        <td align="center">
+            <table width="100%" style="max-width: 600px; background:#ffffff; border-radius:12px; overflow:hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" cellpadding="0" cellspacing="0">
+                
+                <!-- Header -->
+                <tr>
+                    <td align="center" bgcolor="#0044cc" style="padding: 20px;">
+                        <h2 style="color:#ffffff; margin:0; font-size:22px;">New Access Request</h2>
+                        <p style="color:#cdd9f9; font-size:14px; margin:5px 0 0;">Insider Hub</p>
+                    </td>
+                </tr>
+
+                <!-- Greeting -->
+                <tr>
+                    <td style="padding: 20px;">
+                        <p style="margin:0; font-size:16px; color:#333;">Hello Admin,</p>
+                        <p style="margin:10px 0 0; font-size:15px; color:#555;">
+                            A new user has requested access. Below are the details:
+                        </p>
+                    </td>
+                </tr>
+
+                <!-- Details Table -->
+                <tr>
+                    <td style="padding: 0 20px 20px;">
+                        <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse: collapse; font-size:15px;">
+                            <tr>
+                                <td style="padding:10px; background:#f9fbff; border-bottom:1px solid #eee; font-weight:bold; color:#0044cc;">Name</td>
+                                <td style="padding:10px; background:#f9fbff; border-bottom:1px solid #eee;" th:text="${name}"></td>
+                            </tr>
+                            <tr>
+                                <td style="padding:10px; border-bottom:1px solid #eee; font-weight:bold; color:#0044cc;">SAP ID</td>
+                                <td style="padding:10px; border-bottom:1px solid #eee;" th:text="${sapid}"></td>
+                            </tr>
+                            <tr>
+                                <td style="padding:10px; background:#f9fbff; border-bottom:1px solid #eee; font-weight:bold; color:#0044cc;">Email</td>
+                                <td style="padding:10px; background:#f9fbff; border-bottom:1px solid #eee;" th:text="${email}"></td>
+                            </tr>
+                            <tr>
+                                <td style="padding:10px; border-bottom:1px solid #eee; font-weight:bold; color:#0044cc;">Phone Number</td>
+                                <td style="padding:10px; border-bottom:1px solid #eee;" th:text="${phoneNumber}"></td>
+                            </tr>
+                            <tr>
+                                <td style="padding:10px; background:#f9fbff; font-weight:bold; color:#0044cc;">Project</td>
+                                <td style="padding:10px; background:#f9fbff;" th:text="${project}"></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- Call to Action -->
+                <tr>
+                    <td align="center" style="padding: 20px;">
+                        <a href="/adminPage" style="display:inline-block; background:#0044cc; color:#ffffff; padding:12px 24px; border-radius:6px; text-decoration:none; font-size:15px; font-weight:bold;">
+                            Review Request
+                        </a>
+                    </td>
+                </tr>
+
+                <!-- Footer -->
+                <tr>
+                    <td align="center" style="padding: 15px; background:#f4f6f8; font-size:12px; color:#888;">
+                        © 2025 Insider Hub | Automated Email Notification
+                    </td>
+                </tr>
+
+            </table>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
