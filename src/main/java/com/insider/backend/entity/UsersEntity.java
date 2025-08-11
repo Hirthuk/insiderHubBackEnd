@@ -58,7 +58,7 @@ public class UsersEntity {
     private String designation;  // Fixed name
 
     @Column(name = "phone_number")  
-    private Long phone_number;
+    private Long phoneNumber;
 
     @Column(name = "project_name")
     private String project_name;
@@ -135,12 +135,12 @@ public class UsersEntity {
         this.designation = designation;
     }
 
-    public Long getPhone_number() {
-        return phone_number;
+    public Long getPhonenumber() {
+        return phoneNumber;
     }
 
-    public void setPhone_number(Long phone_number) {
-        this.phone_number = phone_number;
+    public void setPhone_number(Long phoneNumber) {
+       this.phoneNumber  = phoneNumber;
     }
 
     public String getProject_name() {
@@ -182,14 +182,14 @@ public class UsersEntity {
 
     // Constructor with fields (annotations removed from params; they belong on fields)
     public UsersEntity(String email, String password, String role, String name, Long sapid, String designation,
-                       Long phone_number, String project_name, Integer total_appreciation, Integer rank, LocalDateTime creation_date) {
+                       Long phoneNumber, String project_name, Integer total_appreciation, Integer rank, LocalDateTime creation_date) {
         this.email = email;
         this.password = password;
         this.role = role;
         this.name = name;
         this.sapid = sapid;
         this.designation = designation;
-        this.phone_number = phone_number;
+        this.phoneNumber = phoneNumber;
         this.project_name = project_name;
         this.total_appreciation = total_appreciation;
         this.rank = rank;
