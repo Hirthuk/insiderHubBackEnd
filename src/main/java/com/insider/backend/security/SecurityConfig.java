@@ -21,16 +21,19 @@ public class SecurityConfig {
 
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http, JwtUtil jwtUtil) throws Exception {
-        http.csrf(csrf -> csrf.disable())
-            .authorizeHttpRequests(authz -> authz
-                .requestMatchers("/api/auth/login").permitAll()
-                .requestMatchers("/api/email").permitAll()
-                .anyRequest().authenticated()
-            )
-            .addFilterBefore(
-                new JwtAuthFilter(jwtUtil),
-                UsernamePasswordAuthenticationFilter.class
-            );
+    	http
+    	  .csrf(csrf -> csrf.disable())
+    	  .authorizeHttpRequests(auth -> auth
+    	      .requestMatchers(
+    	          "/api/auth/login",          // your public login
+    	          "/v3/api-docs/**",          // OpenAPI docs
+    	          "/swagger-ui/**",           // Swagger UI resources
+    	          "/swagger-ui.html"          // Swagger UI entry
+    	      ).permitAll()
+    	      .anyRequest().authenticated()
+    	  )
+    	  .addFilterBefore(new JwtAuthFilter(jwtUtil),
+    	      UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
