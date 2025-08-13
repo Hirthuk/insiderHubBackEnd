@@ -4,14 +4,17 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.insider.backend.DTO.UserProfileDTO;
 import com.insider.backend.entity.UsersEntity;
 import com.insider.backend.service.UserService;
 
@@ -45,5 +48,13 @@ public class UserController {
 		return "User is deleted successfully";
 	}
 	
+	@GetMapping("/profile")
+	@PreAuthorize("hasAnyRole('ADMIN', 'USER')")
+	public UserProfileDTO getProfileDetails(Authentication authentication) {
+		return userService.getUserDetails(Long.valueOf(authentication.getName()));
+	}
+//	public UserProfileDTO getProfileDetails(@RequestParam Long sapid) {
+//		return userService.getUserDetails(sapid);
+//	}
 	
 }

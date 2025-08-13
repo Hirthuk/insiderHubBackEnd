@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.insider.backend.DTO.UserProfileDTO;
 import com.insider.backend.entity.UsersEntity;
 import com.insider.backend.exceptions.ConflictException;
 import com.insider.backend.exceptions.ResourceNotFoundException;
@@ -53,6 +54,22 @@ public class UserService {
 			throw new ResourceNotFoundException("User with the sapid is not present" + sapid);
 		}
 	}
+	
+//	Get User profile details
+	public UserProfileDTO getUserDetails(Long sapid) {
+		Optional<UsersEntity>  userDetails = userRepository.findBySapid(sapid);
+		if(!userDetails.isPresent()) {
+			 throw new ResourceNotFoundException("SapID is not present");
+		}
+		UsersEntity userEntity = userDetails.get();
+		
+		UserProfileDTO userProfile = new UserProfileDTO (userEntity.getName(), userEntity.getDesignation(), userEntity.getSapid(), userEntity.getPhonenumber(), 
+				userEntity.getProject_name(),userEntity.getTotal_appreciation(), userEntity.getRank());
+		
+		return userProfile;
+	}
+	
+	
 	
 	
 }
