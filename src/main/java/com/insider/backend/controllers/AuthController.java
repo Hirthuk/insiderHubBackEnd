@@ -2,6 +2,7 @@ package com.insider.backend.controllers;
 
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,5 +22,9 @@ public class AuthController {
 	public Map<String, Object> login(@RequestBody LoginUserRequest loginUserRequest){
 		return authService.login(loginUserRequest);
 	}
-
+	
+	@PostMapping("/logout")
+	public String logout(Authentication authentication) {
+		return authService.logout(Long.valueOf(authentication.getName()));
+	}
 }

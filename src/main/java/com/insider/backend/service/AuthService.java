@@ -45,8 +45,8 @@ public class AuthService {
 			if(passwordEncoder.matches(password, user.getPassword())) {
 				String role = user.getRole();
 				String token = jwtUtuil.generateToken(sapid, role);
-				
-				return Map.of("role", role, "token", token);
+				String sucessMessage = "User Login successful";
+				return Map.of("role", role, "token", token, "message", sucessMessage, "sapid", sapid);
 			}
 			else {
 				 throw new BadCredentialsException("Invalid Credentials");
@@ -57,6 +57,15 @@ public class AuthService {
 			throw new ResourceNotFoundException("User not found. Please SignUp to get started");
 		}
 		
+	}
+	
+	public String logout(Long sapid) {
+		Optional<UsersEntity> existingUser = userRepository.findBySapid(sapid);
+		
+		if(existingUser.isPresent()) {
+			throw new BadCredentialsException("User is Logged out successfully");
+		}
+		return "User is not found";
 	}
 
 }

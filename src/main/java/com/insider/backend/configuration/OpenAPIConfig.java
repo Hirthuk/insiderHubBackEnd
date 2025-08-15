@@ -29,6 +29,6 @@ public class OpenAPIConfig {
             .title("InsiderHub API")
             .version("1.0")
             .description("API documentation for InsiderHub backend")
-            .contact(new Contact().name("InsiderHub Team").email("support@insiderhub.local")));
+            .contact(new Contact().name("InsiderHub Team").email("sharanclouddev@gmail.com")));
   }
 }
