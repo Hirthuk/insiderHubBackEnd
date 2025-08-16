@@ -33,6 +33,26 @@ public class EmailService {
 	@Autowired
 	public SpringTemplateEngine templateEngine;
 	
+	public String sendEmailTrigger(String[] toAddresses, String name, String html) {
+		try {
+			MimeMessage message = mailsender.createMimeMessage();
+			MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
+			
+			helper.setFrom("insiderhubnotification@gmail.com");
+			helper.setTo(toAddresses);
+			helper.setSubject(name + "  Requested Access");
+			helper.setText(html, true);
+			
+			mailsender.send(message);
+			return "Request has been submitted successfully";
+			
+		}
+		catch(Exception e) {
+			return e.getMessage();
+		}
+		
+	}
+	
 	public String sendEmailNotification(UsersEntity userentity) {
 		
 //		Existing user details and Admin details
@@ -42,9 +62,19 @@ public class EmailService {
 		List<UsersEntity> adminEmails = userRepository.findByRole("ADMIN");
 		
 		
-		if(existingUser.isPresent() || existingUserbyEmail.isPresent() || existingUserbyphone.isPresent()) {
-			throw new ConflictException("SAPID or EMAIL or Phone number is already taken");
+		if(existingUser.isPresent()) {
+			Long existingUserSapid = existingUser.get().getSapid();
+			throw new ConflictException(String.valueOf(existingUserSapid) + " is already taken");
 		}
+		
+		if(existingUserbyEmail.isPresent()) {
+			throw new ConflictException(existingUserbyEmail.get().getEmail() + "  is already taken");
+		}
+		
+		if(existingUserbyphone.isPresent() && !existingUserbyphone.isEmpty() && existingUserbyphone.get().getPhonenumber() != null) {
+			throw new ConflictException("Phone number is taken already");
+		}
+		
 		String hashedPassword = passwordEncoder.encode(userentity.getPassword());
 		userentity.setPassword(hashedPassword);
 		String[] toAddresses = adminEmails.stream()
@@ -64,23 +94,19 @@ public class EmailService {
 			
 //			Process the HtmlTemplate
 			String htmlcontent = templateEngine.process("user-request-email", context);
-			
+			String userhtmlcontent = templateEngine.process("user-notification-email", context);
 			
 //			Mail Configuration
-			MimeMessage message = mailsender.createMimeMessage();
-			MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
+			String[] userArray = {userentity.getEmail()};
+			this.sendEmailTrigger(userArray, userentity.getName(), userhtmlcontent);
+			return this.sendEmailTrigger(toAddresses, userentity.getName(), htmlcontent);
+			 
 			
-			helper.setFrom("insiderhubnotification@gmail.com");
-			helper.setTo(toAddresses);
-			helper.setSubject(userentity.getName() + "  Requested Access");
-			helper.setText(htmlcontent, true);
-			
-			mailsender.send(message);
 		}
 		catch(Exception e) {
 			return e.getMessage();
 		}
 		
-		return "Request has been submitted successfully";
+		
 	}
 }

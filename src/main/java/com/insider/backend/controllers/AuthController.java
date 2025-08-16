@@ -27,4 +27,9 @@ public class AuthController {
 	public String logout(Authentication authentication) {
 		return authService.logout(Long.valueOf(authentication.getName()));
 	}
+	
+	@PostMapping("/isAdmin")
+	public Boolean isAdmin(@RequestBody String token) {
+		return authService.isAdmin(token);
+	}
 }

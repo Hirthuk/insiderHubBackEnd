@@ -14,6 +14,8 @@ import com.insider.backend.exceptions.ResourceNotFoundException;
 import com.insider.backend.repositories.UserRepository;
 import com.insider.backend.util.JwtUtil;
 
+import io.jsonwebtoken.Claims;
+
 @Service
 public class AuthService {
 	
@@ -66,6 +68,18 @@ public class AuthService {
 			throw new BadCredentialsException("User is Logged out successfully");
 		}
 		return "User is not found";
+	}
+	
+	public Boolean isAdmin(String token) {
+	
+		String role = jwtUtuil.extractRole(token);
+		if(role.equalsIgnoreCase(role)) {
+			return true;
+		}
+		
+		else {
+			return false;
+		}
 	}
 
 }

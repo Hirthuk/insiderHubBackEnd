@@ -4,74 +4,203 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Access Request - Insider Hub</title>
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f8fafc;
+            font-family: 'Inter', Arial, sans-serif;
+            line-height: 1.5;
+            color: #334155;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .header {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            padding: 32px 20px;
+            text-align: center;
+        }
+        .header h2 {
+            color: #ffffff;
+            margin: 0;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+        .header p {
+            color: #e0e7ff;
+            font-size: 14px;
+            margin: 8px 0 0;
+            font-weight: 400;
+        }
+        .content {
+            padding: 24px 32px;
+        }
+        .greeting {
+            margin-bottom: 24px;
+        }
+        .greeting p {
+            margin: 0;
+            font-size: 16px;
+            color: #334155;
+        }
+        .greeting p.subtext {
+            margin-top: 8px;
+            color: #64748b;
+        }
+        .details-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: 15px;
+            margin: 24px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+        }
+        .details-table td {
+            padding: 16px 20px;
+            vertical-align: top;
+        }
+        .details-table tr:nth-child(odd) td {
+            background-color: #ffffff;
+        }
+        .details-table tr:first-child td {
+            border-top: none;
+        }
+        .details-table tr:last-child td {
+            border-bottom: none;
+        }
+        .label {
+            font-weight: 600;
+            color: #1e40af;
+            white-space: nowrap;
+            width: 30%;
+        }
+        .value {
+            color: #334155;
+        }
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: #ffffff;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            margin: 24px 0;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .footer {
+            padding: 20px;
+            background-color: #f1f5f9;
+            font-size: 12px;
+            color: #64748b;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+        }
+        .logo {
+            margin-bottom: 16px;
+        }
+        .logo-img {
+            height: 40px;
+        }
+    </style>
 </head>
-<body style="margin:0; padding:0; background-color:#f4f6f8; font-family:Arial, sans-serif;">
+<body>
 
 <!-- Container -->
-<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#f4f6f8" style="padding: 20px 0;">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#f8fafc" style="padding: 40px 20px;">
     <tr>
         <td align="center">
-            <table width="100%" style="max-width: 600px; background:#ffffff; border-radius:12px; overflow:hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" cellpadding="0" cellspacing="0">
+            <table class="container" width="100%" border="0" cellspacing="0" cellpadding="0">
                 
                 <!-- Header -->
                 <tr>
-                    <td align="center" bgcolor="#0044cc" style="padding: 20px;">
-                        <h2 style="color:#ffffff; margin:0; font-size:22px;">New Access Request</h2>
-                        <p style="color:#cdd9f9; font-size:14px; margin:5px 0 0;">Insider Hub</p>
+                    <td class="header">
+                        <div class="logo">
+                            <img class="logo-img" src="https://via.placeholder.com/160x40?text=Insider+Hub" alt="Insider Hub Logo">
+                        </div>
+                        <h2>New Access Request</h2>
+                        <p>Administrator Notification</p>
                     </td>
                 </tr>
 
-                <!-- Greeting -->
+                <!-- Content -->
                 <tr>
-                    <td style="padding: 20px;">
-                        <p style="margin:0; font-size:16px; color:#333;">Hello Admin,</p>
-                        <p style="margin:10px 0 0; font-size:15px; color:#555;">
-                            A new user has requested access. Below are the details:
-                        </p>
-                    </td>
-                </tr>
+                    <td class="content">
+                        <div class="greeting">
+                            <p>Hello Admin,</p>
+                            <p class="subtext">A new user has requested access to Insider Hub. Please review the details below:</p>
+                        </div>
 
-                <!-- Details Table -->
-                <tr>
-                    <td style="padding: 0 20px 20px;">
-                        <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse: collapse; font-size:15px;">
+                        <!-- Details Table -->
+                        <table class="details-table">
                             <tr>
-                                <td style="padding:10px; background:#f9fbff; border-bottom:1px solid #eee; font-weight:bold; color:#0044cc;">Name</td>
-                                <td style="padding:10px; background:#f9fbff; border-bottom:1px solid #eee;" th:text="${name}"></td>
+                                <td class="label">Name</td>
+                                <td class="value" th:text="${name}"></td>
                             </tr>
                             <tr>
-                                <td style="padding:10px; border-bottom:1px solid #eee; font-weight:bold; color:#0044cc;">SAP ID</td>
-                                <td style="padding:10px; border-bottom:1px solid #eee;" th:text="${sapid}"></td>
+                                <td class="label">SAP ID</td>
+                                <td class="value" th:text="${sapid}"></td>
                             </tr>
                             <tr>
-                                <td style="padding:10px; background:#f9fbff; border-bottom:1px solid #eee; font-weight:bold; color:#0044cc;">Email</td>
-                                <td style="padding:10px; background:#f9fbff; border-bottom:1px solid #eee;" th:text="${email}"></td>
+                                <td class="label">Email</td>
+                                <td class="value" th:text="${email}"></td>
                             </tr>
                             <tr>
-                                <td style="padding:10px; border-bottom:1px solid #eee; font-weight:bold; color:#0044cc;">Phone Number</td>
-                                <td style="padding:10px; border-bottom:1px solid #eee;" th:text="${phoneNumber}"></td>
+                                <td class="label">Phone Number</td>
+                                <td class="value" th:text="${phoneNumber}"></td>
                             </tr>
                             <tr>
-                                <td style="padding:10px; background:#f9fbff; font-weight:bold; color:#0044cc;">Project</td>
-                                <td style="padding:10px; background:#f9fbff;" th:text="${project}"></td>
+                                <td class="label">Project</td>
+                                <td class="value" th:text="${project}"></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Request Date</td>
+                                <td class="value" th:text="${#dates.format(#dates.createNow(), 'MMMM dd, yyyy')}"></td>
                             </tr>
                         </table>
-                    </td>
-                </tr>
 
-                <!-- Call to Action -->
-                <tr>
-                    <td align="center" style="padding: 20px;">
-                        <a href="/adminPage" style="display:inline-block; background:#0044cc; color:#ffffff; padding:12px 24px; border-radius:6px; text-decoration:none; font-size:15px; font-weight:bold;">
-                            Review Request
-                        </a>
+                        <!-- Call to Action -->
+                        <div style="text-align: center; color: #0c4a6e;">
+                            <a href="/adminPage" class="cta-button">
+                                Review Request in Admin Portal
+                            </a>
+                            <p style="font-size: 14px; color: #64748b; margin-top: 8px;">
+                                This request will expire in 7 days if not reviewed.
+                            </p>
+                        </div>
+
+                        <div style="margin-top: 24px; padding: 16px; background-color: #f0f9ff; border-radius: 8px; border-left: 4px solid #0369a1;">
+                            <p style="margin: 0; font-size: 14px; color: #0c4a6e;">
+                                <strong>Note:</strong> Please verify the user's details before approving access. Contact the user directly if any information requires clarification.
+                            </p>
+                        </div>
                     </td>
                 </tr>
 
                 <!-- Footer -->
                 <tr>
-                    <td align="center" style="padding: 15px; background:#f4f6f8; font-size:12px; color:#888;">
-                        © 2025 Insider Hub | Automated Email Notification
+                    <td class="footer">
+                        <p style="margin: 0;">© 2025 Insider Hub. All rights reserved.</p>
+                        <p style="margin: 8px 0 0; font-size: 11px; color: #94a3b8;">
+                            This is an automated message. Please do not reply directly to this email.
+                        </p>
                     </td>
                 </tr>
 
