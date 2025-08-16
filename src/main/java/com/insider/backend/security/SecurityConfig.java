@@ -1,5 +1,6 @@
 package com.insider.backend.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -11,6 +12,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import com.insider.backend.configuration.FrontEndEndpoint;
 import com.insider.backend.util.JwtUtil;
 
 import java.util.Arrays;
@@ -23,13 +25,15 @@ public class SecurityConfig {
     BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-    
+    @Autowired
+    public FrontEndEndpoint frontendUrl;
  // ✅ Define CORS rules
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
+        String frontend_endpoint = frontendUrl.getFrontendUrl();
         config.setAllowCredentials(true);
-        config.setAllowedOrigins(Arrays.asList("http://localhost:5173")); // React dev server
+        config.setAllowedOrigins(Arrays.asList(frontend_endpoint)); // React dev server
         config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(Arrays.asList("*"));
 
@@ -48,7 +52,8 @@ public class SecurityConfig {
                     "/api/auth/login",
                     "/v3/api-docs/**",
                     "/swagger-ui/**",
-                    "/swagger-ui.html"
+                    "/swagger-ui.html",
+                    "/api/email"
                 ).permitAll()
                 .anyRequest().authenticated()
             )
