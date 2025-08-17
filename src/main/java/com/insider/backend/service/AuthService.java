@@ -70,16 +70,5 @@ public class AuthService {
 		return "User is not found";
 	}
 	
-	public Boolean isAdmin(String token) {
-	
-		String role = jwtUtuil.extractRole(token);
-		if(role.equalsIgnoreCase(role)) {
-			return true;
-		}
-		
-		else {
-			return false;
-		}
-	}
 
 }

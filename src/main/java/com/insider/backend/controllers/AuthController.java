@@ -2,6 +2,8 @@ package com.insider.backend.controllers;
 
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,8 +30,16 @@ public class AuthController {
 		return authService.logout(Long.valueOf(authentication.getName()));
 	}
 	
+	@PreAuthorize("hasAnyRole('USER','ADMIN')")
 	@PostMapping("/isAdmin")
-	public Boolean isAdmin(@RequestBody String token) {
-		return authService.isAdmin(token);
+	public Boolean isAdmin(Authentication authentication) {
+		try {
+		   boolean answer =  authentication.getAuthorities().stream().anyMatch(auth -> auth.getAuthority().equals("ROLE_ADMIN"));
+		   System.out.println(answer);
+		   return answer;
+		}
+		catch(Exception e) {
+			throw new BadCredentialsException("You are not authorized");
+		}
 	}
 }

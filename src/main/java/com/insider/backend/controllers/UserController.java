@@ -51,7 +51,8 @@ public class UserController {
 	@GetMapping("/profile")
 	@PreAuthorize("hasAnyRole('ADMIN', 'USER')")
 	public UserProfileDTO getProfileDetails(Authentication authentication) {
-		return userService.getUserDetails(Long.valueOf(authentication.getName()));
+			return userService.getUserDetails(Long.valueOf(authentication.getName()));
+		
 	}
 //	public UserProfileDTO getProfileDetails(@RequestParam Long sapid) {
 //		return userService.getUserDetails(sapid);

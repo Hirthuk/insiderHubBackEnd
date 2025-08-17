@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -57,16 +58,22 @@ public class UserService {
 	
 //	Get User profile details
 	public UserProfileDTO getUserDetails(Long sapid) {
-		Optional<UsersEntity>  userDetails = userRepository.findBySapid(sapid);
-		if(!userDetails.isPresent()) {
-			 throw new ResourceNotFoundException("SapID is not present");
+		try {
+			Optional<UsersEntity>  userDetails = userRepository.findBySapid(sapid);
+			if(!userDetails.isPresent()) {
+				 throw new ResourceNotFoundException("SapID is not present");
+			}
+			UsersEntity userEntity = userDetails.get();
+			
+			UserProfileDTO userProfile = new UserProfileDTO (userEntity.getName(), userEntity.getDesignation(), userEntity.getSapid(), userEntity.getPhonenumber(), 
+					userEntity.getProject_name(),userEntity.getTotal_appreciation(), userEntity.getRank());
+			
+			return userProfile;
 		}
-		UsersEntity userEntity = userDetails.get();
+		catch(Exception e) {
+			throw new BadCredentialsException(e.getMessage());
+		}
 		
-		UserProfileDTO userProfile = new UserProfileDTO (userEntity.getName(), userEntity.getDesignation(), userEntity.getSapid(), userEntity.getPhonenumber(), 
-				userEntity.getProject_name(),userEntity.getTotal_appreciation(), userEntity.getRank());
-		
-		return userProfile;
 	}
 	
 	
