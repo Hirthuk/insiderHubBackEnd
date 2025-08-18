@@ -25,7 +25,8 @@ public class UserService {
 	
 //	To List All Users
 	public List<UsersEntity> getAllUsers() {
-		return userRepository.findAll();
+		List<UsersEntity> users = userRepository.findAll();
+		return users;
 	}
 	
 //	To Create User
@@ -74,6 +75,16 @@ public class UserService {
 			throw new BadCredentialsException(e.getMessage());
 		}
 		
+	}
+	
+//	Get  users Details based on role
+	public List<UsersEntity> getUsersByRole(String role){
+		try {
+			return userRepository.findByRole(role);
+		}
+		catch(Exception e) {
+			throw new RuntimeException("Internal error");
+		}
 	}
 	
 	

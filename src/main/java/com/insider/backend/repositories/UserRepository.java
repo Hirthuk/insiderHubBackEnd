@@ -19,5 +19,6 @@ public interface UserRepository extends JpaRepository<UsersEntity, Long> {
 	void deleteBySapid(Long sapid);
 	
 	Optional<UsersEntity> findByPhoneNumber(Long phoneNumber);
+	
 	List<UsersEntity> findByRole(String role);
 }

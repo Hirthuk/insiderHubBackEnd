@@ -3,6 +3,7 @@ package com.insider.backend.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,6 +26,9 @@ import jakarta.validation.Valid;
 @RequestMapping("/api/users")
 public class UserController {
 	
+	String admin = "ADMIN";
+	String user = "USER";
+			
 	@Autowired
 	public UserService userService;
 	
@@ -57,5 +61,27 @@ public class UserController {
 //	public UserProfileDTO getProfileDetails(@RequestParam Long sapid) {
 //		return userService.getUserDetails(sapid);
 //	}
+	
+  @GetMapping("/adminusers")
+  @PreAuthorize("hasRole('ADMIN')")
+  public List<UsersEntity> getAdminUsers(String admin){
+	  try {
+		  return userService.getUsersByRole(admin);
+	  }
+	  catch(Exception e){
+		  throw new AccessDeniedException(e.getMessage());
+	  }
+  }
+  
+  @GetMapping("/userroleusers")
+  @PreAuthorize("hasRole('ADMIN')")
+  public List<UsersEntity> getUserRoleUsers(String user){
+	  try {
+		  return userService.getUsersByRole(user);
+	  }
+	  catch(Exception e) {
+		   throw new AccessDeniedException(e.getMessage());
+	  }
+  }
 	
 }
