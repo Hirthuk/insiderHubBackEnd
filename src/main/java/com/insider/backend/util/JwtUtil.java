@@ -12,7 +12,7 @@ import java.util.Map;
 public class JwtUtil {
 
     private final SecretKey SECRET_KEY = Jwts.SIG.HS256.key().build();
-    private final long EXPIRATION_MILLS = 1000 * 60 * 60 * 10; // 10 hours
+    private final long EXPIRATION_MILLS = 1000*60*60*10; // 10 hours
 
     public String generateToken(Long sapid, String role) {
         Map<String, Object> claims = new HashMap<>();

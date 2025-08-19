@@ -64,9 +64,9 @@ public class UserController {
 	
   @GetMapping("/adminusers")
   @PreAuthorize("hasRole('ADMIN')")
-  public List<UsersEntity> getAdminUsers(String admin){
+  public List<UsersEntity> getAdminUsers(){
 	  try {
-		  return userService.getUsersByRole(admin);
+		  return userService.getUsersByRole("ADMIN");
 	  }
 	  catch(Exception e){
 		  throw new AccessDeniedException(e.getMessage());
@@ -75,9 +75,9 @@ public class UserController {
   
   @GetMapping("/userroleusers")
   @PreAuthorize("hasRole('ADMIN')")
-  public List<UsersEntity> getUserRoleUsers(String user){
+  public List<UsersEntity> getUserRoleUsers(){
 	  try {
-		  return userService.getUsersByRole(user);
+		  return userService.getUsersByRole("USER");
 	  }
 	  catch(Exception e) {
 		   throw new AccessDeniedException(e.getMessage());
