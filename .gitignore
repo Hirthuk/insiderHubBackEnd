@@ -78,3 +78,6 @@ application.properties
 
 # Ignore Maven wrapper files
 .mvn/wrapper/maven-wrapper.jar
+
+.env
+*.env
