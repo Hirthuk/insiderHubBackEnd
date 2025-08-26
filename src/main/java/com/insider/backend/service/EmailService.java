@@ -55,28 +55,7 @@ public class EmailService {
 	
 	public String sendEmailNotification(UsersEntity userentity) {
 		
-//		Existing user details and Admin details
-		Optional<UsersEntity> existingUser = userRepository.findBySapid(userentity.getSapid()) ;
-		Optional<UsersEntity>	 existingUserbyEmail =	userRepository.findByEmail(userentity.getEmail());
-		Optional<UsersEntity> existingUserbyphone = userRepository.findByPhoneNumber(userentity.getPhonenumber());
 		List<UsersEntity> adminEmails = userRepository.findByRole("ADMIN");
-		
-		
-		if(existingUser.isPresent()) {
-			Long existingUserSapid = existingUser.get().getSapid();
-			throw new ConflictException(String.valueOf(existingUserSapid) + " is already taken");
-		}
-		
-		if(existingUserbyEmail.isPresent()) {
-			throw new ConflictException(existingUserbyEmail.get().getEmail() + "  is already taken");
-		}
-		
-		if(existingUserbyphone.isPresent() && !existingUserbyphone.isEmpty() && existingUserbyphone.get().getPhonenumber() != null) {
-			throw new ConflictException("Phone number is taken already");
-		}
-		
-		String hashedPassword = passwordEncoder.encode(userentity.getPassword());
-		userentity.setPassword(hashedPassword);
 		String[] toAddresses = adminEmails.stream()
 		        .map(UsersEntity::getEmail)
 		        .toArray(String[]::new);

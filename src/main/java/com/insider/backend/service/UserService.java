@@ -37,8 +37,8 @@ public class UserService {
 			throw new ConflictException("User with the SAP ID is already present");
 		}
 		else {
-			String hashedPassword = passwordEncoder.encode(user.getPassword());
-			user.setPassword(hashedPassword);
+//			String hashedPassword = passwordEncoder.encode(user.getPassword());
+//			user.setPassword(hashedPassword); Will be managed in the User Request action
 			UsersEntity newUser = userRepository.save(user);
 			return newUser.getName() + "  Has been added successfully";
 		}
