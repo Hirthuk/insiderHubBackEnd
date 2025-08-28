@@ -23,6 +23,9 @@ public class UserService {
 	@Autowired
 	public BCryptPasswordEncoder passwordEncoder;
 	
+	@Autowired
+	public UserRequestService userRequestService;
+	
 //	To List All Users
 	public List<UsersEntity> getAllUsers() {
 		List<UsersEntity> users = userRepository.findAll();

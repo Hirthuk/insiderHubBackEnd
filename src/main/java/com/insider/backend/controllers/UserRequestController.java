@@ -46,7 +46,7 @@ public class UserRequestController {
 	@PostMapping("/delete")
 	@PreAuthorize("hasRole('ADMIN')")
 	public void deleteUserRequest(@RequestBody Long sapid) {
-		 userRequestRepository.deleteById(sapid);
+		 userRequestRepository.deleteBySapid(sapid);
 	}
 
 }

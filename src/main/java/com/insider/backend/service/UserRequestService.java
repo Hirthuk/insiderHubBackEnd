@@ -13,6 +13,8 @@ import com.insider.backend.exceptions.ConflictException;
 import com.insider.backend.repositories.UserRepository;
 import com.insider.backend.repositories.UserRequestRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class UserRequestService {
 	
@@ -70,6 +72,7 @@ public class UserRequestService {
 		}
 	}
 	
+	@Transactional
 	public void DeleteUser(Long sapid) {
 		try {
 			 userRequestRepository.deleteBySapid(sapid);

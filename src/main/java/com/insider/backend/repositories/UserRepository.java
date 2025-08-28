@@ -20,6 +20,7 @@ public interface UserRepository extends JpaRepository<UsersEntity, Long> {
 	
 	Optional<UsersEntity> findBySapid(Long sapid);
 	
+	@Transactional
 	void deleteBySapid(Long sapid);
 	
 	Optional<UsersEntity> findByPhoneNumber(Long phoneNumber);
