@@ -1,0 +1,197 @@
+[{
+  "table_name": "appreciations",
+  "column_name": "id",
+  "data_type": "bigint",
+  "character_maximum_length": null,
+  "column_default": null,
+  "is_nullable": "NO"
+}, {
+  "table_name": "appreciations",
+  "column_name": "appreciation_message",
+  "data_type": "character varying",
+  "character_maximum_length": 255,
+  "column_default": null,
+  "is_nullable": "NO"
+}, {
+  "table_name": "appreciations",
+  "column_name": "creation_date",
+  "data_type": "timestamp without time zone",
+  "character_maximum_length": null,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "appreciations",
+  "column_name": "from_sapid",
+  "data_type": "bigint",
+  "character_maximum_length": null,
+  "column_default": null,
+  "is_nullable": "NO"
+}, {
+  "table_name": "appreciations",
+  "column_name": "name",
+  "data_type": "character varying",
+  "character_maximum_length": 255,
+  "column_default": null,
+  "is_nullable": "NO"
+}, {
+  "table_name": "appreciations",
+  "column_name": "likes",
+  "data_type": "bigint",
+  "character_maximum_length": null,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "appreciations",
+  "column_name": "to_sapid",
+  "data_type": "bigint",
+  "character_maximum_length": null,
+  "column_default": null,
+  "is_nullable": "NO"
+}, {
+  "table_name": "user_request",
+  "column_name": "id",
+  "data_type": "bigint",
+  "character_maximum_length": null,
+  "column_default": null,
+  "is_nullable": "NO"
+}, {
+  "table_name": "user_request",
+  "column_name": "creation_date",
+  "data_type": "timestamp without time zone",
+  "character_maximum_length": null,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "user_request",
+  "column_name": "designation",
+  "data_type": "character varying",
+  "character_maximum_length": 255,
+  "column_default": null,
+  "is_nullable": "NO"
+}, {
+  "table_name": "user_request",
+  "column_name": "email",
+  "data_type": "character varying",
+  "character_maximum_length": 255,
+  "column_default": null,
+  "is_nullable": "NO"
+}, {
+  "table_name": "user_request",
+  "column_name": "name",
+  "data_type": "character varying",
+  "character_maximum_length": 255,
+  "column_default": null,
+  "is_nullable": "NO"
+}, {
+  "table_name": "user_request",
+  "column_name": "password",
+  "data_type": "character varying",
+  "character_maximum_length": 255,
+  "column_default": null,
+  "is_nullable": "NO"
+}, {
+  "table_name": "user_request",
+  "column_name": "phone_number",
+  "data_type": "bigint",
+  "character_maximum_length": null,
+  "column_default": null,
+  "is_nullable": "NO"
+}, {
+  "table_name": "user_request",
+  "column_name": "sapid",
+  "data_type": "bigint",
+  "character_maximum_length": null,
+  "column_default": null,
+  "is_nullable": "NO"
+}, {
+  "table_name": "user_request",
+  "column_name": "update_date",
+  "data_type": "timestamp without time zone",
+  "character_maximum_length": null,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "users",
+  "column_name": "id",
+  "data_type": "bigint",
+  "character_maximum_length": null,
+  "column_default": null,
+  "is_nullable": "NO"
+}, {
+  "table_name": "users",
+  "column_name": "creation_date",
+  "data_type": "timestamp without time zone",
+  "character_maximum_length": null,
+  "column_default": null,
+  "is_nullable": "NO"
+}, {
+  "table_name": "users",
+  "column_name": "designation",
+  "data_type": "character varying",
+  "character_maximum_length": 100,
+  "column_default": null,
+  "is_nullable": "NO"
+}, {
+  "table_name": "users",
+  "column_name": "email",
+  "data_type": "character varying",
+  "character_maximum_length": 255,
+  "column_default": null,
+  "is_nullable": "NO"
+}, {
+  "table_name": "users",
+  "column_name": "name",
+  "data_type": "character varying",
+  "character_maximum_length": 100,
+  "column_default": null,
+  "is_nullable": "NO"
+}, {
+  "table_name": "users",
+  "column_name": "password",
+  "data_type": "character varying",
+  "character_maximum_length": 255,
+  "column_default": null,
+  "is_nullable": "NO"
+}, {
+  "table_name": "users",
+  "column_name": "phone_number",
+  "data_type": "bigint",
+  "character_maximum_length": null,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "users",
+  "column_name": "project_name",
+  "data_type": "character varying",
+  "character_maximum_length": 255,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "users",
+  "column_name": "rank",
+  "data_type": "integer",
+  "character_maximum_length": null,
+  "column_default": null,
+  "is_nullable": "YES"
+}, {
+  "table_name": "users",
+  "column_name": "role",
+  "data_type": "character varying",
+  "character_maximum_length": 255,
+  "column_default": null,
+  "is_nullable": "NO"
+}, {
+  "table_name": "users",
+  "column_name": "sapid",
+  "data_type": "bigint",
+  "character_maximum_length": null,
+  "column_default": null,
+  "is_nullable": "NO"
+}, {
+  "table_name": "users",
+  "column_name": "total_appreciation",
+  "data_type": "integer",
+  "character_maximum_length": null,
+  "column_default": null,
+  "is_nullable": "YES"
+}]
